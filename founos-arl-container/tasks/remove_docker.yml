@@ -1,6 +1,0 @@
----
-- name: Remove old versions
-  ansible.builtin.yum:
-    name: '{{ item }}'
-    state: absent
-  loop: '{{ remove_docker_pkg }}'
