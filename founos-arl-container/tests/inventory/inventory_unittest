@@ -1,0 +1,4 @@
+[all]
+mpltickdev01.iaas.ar.bsch only_remove=true
+mpltickdev02.iaas.ar.bsch version=podman_rhel remove_old=true
+mpltickdev03.iaas.ar.bsch version=docker_rhel remove_old=true

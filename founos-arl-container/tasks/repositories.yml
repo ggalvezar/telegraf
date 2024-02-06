@@ -1,0 +1,6 @@
+---
+- name: Enable '{{ item }}' Repo
+  ansible.builtin.command:
+    cmd: subscription-manager repos --enable '{{ item }}'
+  loop: '{{ repos[version][ansible_distribution_release] }}'
+  changed_when: false

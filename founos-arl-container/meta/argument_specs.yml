@@ -1,0 +1,47 @@
+argument_specs:
+  main:
+    short_description: Ansible role to manage container engine
+    description:
+      - Ansible role to manage container engine
+    options:
+      version:
+        description:
+          - List of available container engine
+        type: list
+        elements: str
+        choices:
+          - docker_rhel
+          - podman_rhel
+          - docker_ce
+        default:
+          - podman_rhel
+      remove_old:
+        description:
+          - Enable delete old container engine installed
+        type: bool
+        default: false
+      docker_compose:
+        description:
+          - Enable install of Docker-compose package. (only for rhel7 and docker installation)
+        type: bool
+        default: false
+      remove_docker_pkg:
+        description:
+          - List of packages to be removed
+        type: list
+        elements: str
+      docker_ce_pkg:
+        description:
+          - List of packages to be installed on docker community version
+        type: list
+        elements: str
+      # pool_name:
+      #   description:
+      #     - Dictionary of Red Hat Satellite Product needed
+      #   type: dict
+      #   elements: dict
+      # repos:
+      #   description:
+      #     - Dictionary of Red Hat Satellite repositories needed
+      #   type: dict
+      #   elements: dict

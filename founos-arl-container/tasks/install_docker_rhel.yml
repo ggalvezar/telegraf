@@ -1,0 +1,12 @@
+---
+- name: Install '{{ item }}' package
+  ansible.builtin.yum:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ docker_rhel_pkg }}'
+
+- name: Start and enable docker service
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true

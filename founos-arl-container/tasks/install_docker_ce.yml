@@ -1,0 +1,22 @@
+---
+# install_docker_ce.yml
+
+- name: Install '{{ item }}' package
+  ansible.builtin.yum:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ docker_ce_pkg }}'
+
+- name: Start and enable docker service
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Set sysctl ipv4 forward
+  ansible.posix.sysctl:
+    name: net.ipv4.conf.all.forwarding
+    value: '1'
+    sysctl_set: true
+    state: present
+    reload: true
